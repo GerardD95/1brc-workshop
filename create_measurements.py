@@ -112,6 +112,8 @@ def build_test_data(weather_station_names, num_rows_to_create):
     batch_size = 10000  # instead of writing line by line to file, process a batch of stations and put it to disk
     chunks = num_rows_to_create // batch_size
     measurements_file_path = f"measurements/measurements-{num_rows_to_create:_}.txt"
+
+    os.makedirs("measurements", exist_ok=True)
     print("Building test data...")
 
     try:
