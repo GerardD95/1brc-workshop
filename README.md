@@ -39,9 +39,19 @@ Implementations must not rely on specifics of a given data set. Any valid statio
 
 ## Getting started
 
-1. **Set up development environment**: In VS Code, reopen the folder in a container using the Dev Containers extension. This ensures you have a consistent development environment with all necessary tools.
+**Clone this repository**: 
+   ```bash
+   git clone git@github.com:GerardD95/1brc-workshop.git
+   cd 1brc-workshop
+   ```
 
-2. **Generate test data**: Create test data files by running the data generator:
+**Set up development environment**: 
+   
+   In VS Code, reopen the folder in a container using the Dev Containers extension. This ensures you have a consistent development environment with all necessary tools.
+
+**Generate test data**: 
+
+   Create test data files by running the data generator:
    ```bash
    python create_measurements.py <number_of_rows>
    ```
@@ -51,27 +61,25 @@ Implementations must not rely on specifics of a given data set. Any valid statio
    ```
    Note: The ultimate goal is to handle 1 billion rows, but start smaller for development and testing.
 
-3. **Set up your solution file**: Rename the `entries/RENAME_ME.py` file to `entries/firstname_lastname.py` using your actual first and last name.
+**Set up your solution file**: 
+
+   Rename the `entries/RENAME_ME.py` file to `entries/firstname_lastname.py` using your actual first and last name.
 
    Note: If you want to create multiple versions of your solution you can do so by adding a `_v1/_v2/..` suffix. 
 
-4. **Implement your solution**: Start implementing the logic in your renamed file. The file should read the measurements and output the min, mean, and max temperature per station.
+**Implement your solution**: 
 
-5. **Test your implementation**: Run your solution using:
+   Start implementing the logic in your renamed file. The file should read the measurements and output the min, mean, and max temperature per station.
+
+**Test your implementation**: 
    ```bash
-   python entries/your_file.py measurements/path_to_measurements_file
-   ```
-   For example:
-   ```bash
-   python entries/firstname_lastname.py measurements/measurements-1_000_000.txt
+   python leaderboard.py measurements_file_path [<entry1.py> <entry2.py> ...]
    ```
 
-6. **Python interpreters available**:
-   - CPython v3.12 is available as `python3.12`
-   - PyPy 3.9 is available as `pypy3.9`
-   
-   You can test performance differences between interpreters by running your solution with different Python versions.
+   In case you want to use the PyPy python implentation over cPython, you can do so by chosing option 2.
 
-7. **Submit your solution**: Once you're satisfied with your implementation, submit your solution by pushing your changes to the repository.
+**Submit your solution**: 
+
+   Once you're satisfied with your implementation, submit your solution by pushing your changes to the repository.
 
 Remember to test with progressively larger datasets as you optimize your solution, working your way up to the ultimate goal of processing 1 billion rows efficiently!
