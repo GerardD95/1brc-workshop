@@ -18,9 +18,9 @@ Cracow;12.6
 The program should print out the min, mean, and max values per station, alphabetically ordered. The format that is expected varies slightly from language to language, but the following example shows the expected output for the first three stations:
 
 ```
-Hamburg;12.0;23.1;34.2
-Bulawayo;8.9;22.1;35.2
-Palembang;38.8;39.9;41.0
+Hamburg=12.0/23.1/34.2
+Bulawayo=8.9/22.1/35.2
+Palembang=38.8/39.9/41.0
 ```
 
 ## Rules and Limits
