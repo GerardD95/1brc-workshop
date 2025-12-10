@@ -1,0 +1,46 @@
+"""
+    Update:
+        - Replaced the cities dictionary with a defaultdict.
+        - Used array.array to store the city stats instead of a list.
+
+    Execution Time (10m rows): 
+        - cpython:  7.643246082938276
+        - pypy:     1.6451830830192193
+"""
+
+from collections import defaultdict
+import array
+
+def main(file_path: str) -> dict:
+    cities = defaultdict(lambda: array.array('i', [int()] * 4))
+
+    with open(file_path, "rb") as f:
+
+        for line in f:
+            idx = line.index(b";")
+            city = line[:idx]
+            measurement = int(line[idx+1:-3] + line[-2:-1])
+
+            city_stats = cities[city]
+            city_stats[0] = min(city_stats[0], measurement)
+            city_stats[1] = max(city_stats[1], measurement)
+            city_stats[2] += measurement
+            city_stats[3] += 1
+
+    return cities
+
+
+if __name__ == '__main__':
+    import sys
+
+    # Get the file path 
+    file_path = sys.argv[1]
+
+    # Process the file
+    cities = main(file_path)
+
+    # Print the measurements per city
+    for city in sorted(cities.keys()):
+        stats = cities[city]
+        mean = stats[2] / stats[3] / 10  # Calculate mean first, then scale back
+        print(f"{city.decode()}={stats[0] / 10.0:.1f}/{mean:.1f}/{stats[1] / 10.0:.1f}")  # divide by 10.0
